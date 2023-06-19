@@ -1,0 +1,43 @@
+name: Workflow1
+on:
+  workflow_dispatch:
+    inputs:
+      workflow2_name:
+        description: 'Workflow2 Name for Triggering'
+        required: true
+        default: 'Workflow2'
+jobs:
+  build:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v3
+        - name: test
+          run: |
+            mkdir folder
+            cd folder
+            mkdir folder2
+            cd folder2
+            git clone https://github.com/maxxam123/python01-max-dev-yaml
+            mv python01-max-dev-yaml/folder2/deployment.yaml deployment.yaml
+            mv python01-max-dev-yaml//folder2/service.yaml service.yaml
+            mv python01-max-dev-yaml/folder2/deployment-backend.yaml deployment-backend.yaml
+            mv python01-max-dev-yaml//folder2/service-backend-02.yaml service-backend-02.yaml
+            rm -rf python01-max-dev-yaml/
+            sed -i 19d deployment.yaml
+            awk -i inplace 'NR==19{print "        image: hennighausen/python01-max-dev-frontend:v${{github.run_number}} "}1' deployment.yaml
+            cd ../..
+        - name: Pushes to another repository
+          uses: cpina/github-action-push-to-another-repository@main
+          env:
+            API_TOKEN_GITHUB: ${{ secrets.PYTHON01 }}
+          with:
+            source-directory: "folder"
+            destination-github-username: "maxxam123"
+            destination-repository-name: "python01-max-dev-yaml"
+            user-email: hennighausenmax@gmail.com
+            target-branch: main
+        - name: Build the Docker image
+          run: |
+            echo ${{ secrets.DOCKERPW }} | docker login -u hennighausen --password-stdin
+            docker image build -t hennighausen/python01-max-dev-frontend:v${{ github.run_number }} .
+            docker push hennighausen/python01-max-dev-frontend:v${{ github.run_number }}

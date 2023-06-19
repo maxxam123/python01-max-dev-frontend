@@ -1,0 +1,35 @@
+import React, { useEffect, useState } from 'react'
+import axios from "axios"
+import Home from './pages/home/Home';
+
+function App() {
+
+  const [backendData, setBackendData] = useState([{}])
+  const [posts, setPosts] = useState([]);
+
+  useEffect(()=> {
+    fetch("/api").then(
+      response => response.json()
+    ).then(
+      data => {
+        setBackendData(data)
+      }
+    )
+  }, [])
+
+  return (
+    <div className="App">
+    <Home/>
+
+//      {(typeof backendData.users === 'undefined') ? (
+//        <p>Loading...</p>
+//      ) : (
+//        backendData.users.map((user, i)=>(
+//          <p key={i}>{user}</p>
+//        ))
+//      )}
+    </div>
+  );
+}
+
+export default App;

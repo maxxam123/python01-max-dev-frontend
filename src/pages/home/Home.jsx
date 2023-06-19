@@ -12,7 +12,8 @@ export default function Home() {
 
   useEffect(()=>{
     const fetchPosts = async () => {
-    const res = await axios.get("/api/posts/timeline/" + user._id);
+//    const res = await axios.get("/api/posts/timeline/" + user._id);
+    const res = await axios.get("/api/apps/timeline/all/" + "3");  
     setPosts(res.data);
     };
     fetchPosts();

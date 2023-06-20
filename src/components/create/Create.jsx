@@ -25,7 +25,7 @@ export default function Create() {
       owner: owner
     }
 
-      await axios.post("/api/posts", newPost)
+      await axios.post("/api/news", newPost)
       .then((response) => {
         console.log(response);
       })

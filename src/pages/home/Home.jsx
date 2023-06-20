@@ -23,7 +23,6 @@ export default function Home() {
     <div>
     <div className="home">
       <Link className="homelink" to='/cluster'>Go to Clusterpage</Link>
-      <Link className="homelink" to='/rea'>Go to Reactpage</Link>
       <div className="hometitle">HomePage</div>
       {posts.map((p)=> (
         <Post1 key={p.id} post={p} />

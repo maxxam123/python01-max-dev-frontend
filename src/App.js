@@ -6,6 +6,7 @@ import Register from './pages/register/Register';
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route, Navigate, Redirect } from "react-router-dom";
 import { AuthContext } from './context/AuthContext';
+import Cluster from './pages/cluster/Cluster';
 //import { Link } from 'react-router-dom';
 
 function App() {
@@ -22,6 +23,8 @@ function App() {
           !user ? ( <Navigate replace to="/login" />) : ( <Home /> )}/>
         <Route path="/home" element={
           !user ? ( <Navigate replace to="/login" />) : ( <Home /> )}/>
+        <Route path="/cluster" element={
+          !user ? ( <Navigate replace to="/login" />) : ( <Cluster /> )}/>
       </Routes>
     </BrowserRouter>
   );

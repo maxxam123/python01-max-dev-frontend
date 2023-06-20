@@ -6,7 +6,6 @@ export default function Cluster() {
   return (
     <div>
     <div className="cluster">
-      <Link className="clusterlink" to='/rea'>Go to Reactpage</Link>
       <Link className="clusterlink" to='/home'>Go to Homepage</Link>
       Create Cluster
       <Feed/>

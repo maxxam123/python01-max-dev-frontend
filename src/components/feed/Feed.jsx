@@ -5,6 +5,7 @@ import { useContext, useEffect, useState } from "react"
 import { AuthContext } from "../../context/AuthContext"
 import Create from "../create/Create"
 import Post1 from "../post1/Post1"
+import Delete from "../delete/Delete"
 
 export default function Feed() {
   const [posts, setPosts] = useState([]);
@@ -22,6 +23,7 @@ export default function Feed() {
   return (
     <div className="feed">
       <Create/>
+      <Delete/>
       <div className="feedTitle">
         Cluster
       </div>

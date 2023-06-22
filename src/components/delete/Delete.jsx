@@ -15,7 +15,7 @@ export default function Delete() {
       userId: userId
     }
 
-      await axios.delete(`http://localhost:8800/api/posts/delete/${userId}`)
+      await axios.delete(http://localhost:8800/api/del)
       .then((response) => {
         console.log(response);
       })

@@ -24,4 +24,4 @@ jobs:
         - name: test
           run: |
             IMAGE_ID=ghcr.io/${{github.repository_owner}}/testtest:${{github.run_id}}
-            docker push ghcr.io/maxxam12345/testtest
+            docker push ghcr.io/maxxam12345/testtest:latest
